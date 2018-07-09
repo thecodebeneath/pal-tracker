@@ -15,4 +15,15 @@ dependencies {
 //    compile("org.springframework:spring-webmvc")
 //    compile("org.springframework.boot:spring-boot-starter")
 //    compile("org.springframework.boot:spring-boot-starter-tomcat")
+
+  testCompile("org.springframework.boot:spring-boot-starter-test")
+
 }
+
+bootRun.environment([
+        "WELCOME_MESSAGE": "from gradle config",
+])
+
+test.environment([
+        "WELCOME_MESSAGE": "Hello from test",
+])
