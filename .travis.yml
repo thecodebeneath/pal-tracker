@@ -31,6 +31,7 @@ jobs:
       before_deploy:
         - echo "Deploying $RELEASE_TAG to review"
       deploy:
+        if: branch = master
         provider: cloudfoundry
         api: $CF_API_URL
         username: $CF_USERNAME
