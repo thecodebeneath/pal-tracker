@@ -24,9 +24,9 @@ public class TimeEntryController {
         TimeEntry entry = repository.find(id);
         ResponseEntity<TimeEntry> response = null;
         if (entry != null) {
-            response = ResponseEntity.status(HttpStatus.OK).body(entry);
+            response = new ResponseEntity<>(entry, HttpStatus.OK);
         } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(entry);
+            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return response;
     }
@@ -39,14 +39,9 @@ public class TimeEntryController {
 
     @PostMapping("/time-entries")
     public ResponseEntity create(@RequestBody TimeEntry timeEntryToCreate) {
-        Logger.getAnonymousLogger().info(timeEntryToCreate.toString());
-
         TimeEntry entry = repository.create(timeEntryToCreate);
-        ResponseEntity<TimeEntry> response =
-                ResponseEntity.status(HttpStatus.CREATED).body(entry);
-        return response;
+        return new ResponseEntity<>(entry, HttpStatus.CREATED);
     }
-
 
     @PutMapping("/time-entries/{id}")
     public ResponseEntity update(@PathVariable long id, @RequestBody TimeEntry entry) {
@@ -54,9 +49,9 @@ public class TimeEntryController {
 
         ResponseEntity<TimeEntry> response = null;
         if (timeEntry != null) {
-            response = ResponseEntity.status(HttpStatus.OK).body(entry);
+            response = new ResponseEntity<>(entry, HttpStatus.OK);
         } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(entry);
+            response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         return response;
@@ -64,12 +59,8 @@ public class TimeEntryController {
 
     @DeleteMapping("/time-entries/{id}")
     public ResponseEntity<TimeEntry> delete(@PathVariable long id) {
-        TimeEntry entry = repository.find(id);
         repository.delete(id);
-        ResponseEntity<TimeEntry> response =
-                ResponseEntity.status(HttpStatus.NO_CONTENT).body(entry);
-
-        return response;
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
