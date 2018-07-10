@@ -76,6 +76,7 @@ public class TimeEntryControllerTest {
         );
         doReturn(expected).when(timeEntryRepository).list();
 
+        //when(timeEntryRepository.list()).thenReturn(expected);
         ResponseEntity<List<TimeEntry>> response = controller.list();
 
         verify(timeEntryRepository).list();
@@ -88,9 +89,15 @@ public class TimeEntryControllerTest {
         TimeEntry expected = new TimeEntry(1L, 987L, 654L, LocalDate.parse("2017-01-07"), 4);
         doReturn(expected)
             .when(timeEntryRepository)
-            .update(eq(1L), any(TimeEntry.class));
+            .update(anyLong(), any(TimeEntry.class));
+
+        doReturn(expected)
+                .when(timeEntryRepository)
+                .find(anyLong());
+
 
         ResponseEntity response = controller.update(1L, expected);
+
 
         verify(timeEntryRepository).update(1L, expected);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);

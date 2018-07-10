@@ -15,10 +15,10 @@ public class EnvController {
 
     private HashMap<String, String> envVars = new HashMap<String, String>();
 
-    public EnvController(@Value("${PORT}") String port
-                       , @Value("${MEMORY_LIMIT}") String memory_limit
-                       , @Value("${CF_INSTANCE_INDEX}") String cf_instance_index
-                       , @Value("${CF_INSTANCE_ADDR}") String cf_instance_addr) {
+    public EnvController(@Value("${PORT:NOT SET}") String port
+                       , @Value("${MEMORY_LIMIT:NOT SET}") String memory_limit
+                       , @Value("${CF_INSTANCE_INDEX:NOT SET}") String cf_instance_index
+                       , @Value("${CF_INSTANCE_ADDR:NOT SET}") String cf_instance_addr) {
 
         envVars.put("PORT",port);
         envVars.put("MEMORY_LIMIT",memory_limit);
