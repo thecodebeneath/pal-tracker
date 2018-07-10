@@ -24,6 +24,7 @@ jobs:
         file: "build/libs/pal-tracker.jar"
         skip_cleanup: true
     - stage: deploy to review
+      if: branch = master
       language: bash
       script:
         - echo "Downloading $RELEASE_TAG"
@@ -31,7 +32,6 @@ jobs:
       before_deploy:
         - echo "Deploying $RELEASE_TAG to review"
       deploy:
-        if: branch = master
         provider: cloudfoundry
         api: $CF_API_URL
         username: $CF_USERNAME
