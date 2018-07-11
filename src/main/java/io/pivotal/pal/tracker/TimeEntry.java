@@ -5,7 +5,10 @@ import org.apache.tomcat.jni.Local;
 import java.time.LocalDate;
 
 public class TimeEntry {
-    private long id = Long.MIN_VALUE;
+
+    public static final long NULL_LONG = 0;
+
+    private long id;
     private long projectId;
     private long userId;
     private LocalDate date;

@@ -13,7 +13,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     private Long lastIdUsed =  0L;
 
     public TimeEntry create(TimeEntry timeEntry) {
-        if (timeEntry.getId() == Long.MIN_VALUE) {
+        if (timeEntry.getId() == 0) {
             timeEntry.setId(++lastIdUsed);
         }
         repo.put(timeEntry.getId(), timeEntry);

@@ -49,7 +49,7 @@ public class TimeEntryController {
 
         ResponseEntity<TimeEntry> response = null;
         if (timeEntry != null) {
-            response = new ResponseEntity<>(entry, HttpStatus.OK);
+            response = new ResponseEntity<>(timeEntry, HttpStatus.OK);
         } else {
             response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
