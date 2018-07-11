@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
 
     Map<Long, TimeEntry> repo = new HashMap<>();
-    private long lastIdUsed =  0L;
+    private Long lastIdUsed =  0L;
 
     public TimeEntry create(TimeEntry timeEntry) {
         if (timeEntry.getId() == Long.MIN_VALUE) {
@@ -20,11 +20,11 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
         return timeEntry;
     }
 
-    public void delete(long id) {
+    public void delete(Long id) {
         repo.remove(id);
     }
 
-    public TimeEntry find(long id) {
+    public TimeEntry find(Long id) {
         return repo.get(id);
     }
 
@@ -32,7 +32,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
         return new ArrayList<TimeEntry>(repo.values());
     }
 
-    public TimeEntry update(long id, TimeEntry timeEntry) {
+    public TimeEntry update(Long id, TimeEntry timeEntry) {
         TimeEntry find = repo.get(id);
         if (find == null) {
             return null;

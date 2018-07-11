@@ -6,12 +6,12 @@ public interface TimeEntryRepository {
 
     public TimeEntry create(TimeEntry timeEntry);
 
-    public void delete(long id);
+    public void delete(Long id);
 
-    public TimeEntry find(long i);
+    public TimeEntry find(Long i);
 
     public List<TimeEntry> list();
 
-    public TimeEntry update(long id, TimeEntry timeEntry);
+    public TimeEntry update(Long id, TimeEntry timeEntry);
 
 }
