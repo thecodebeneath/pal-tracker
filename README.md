@@ -5,7 +5,7 @@ Setup SSH for git remotes for a new repo:
 - GitHub new repo (don't init with files)
 - git init
 - git commit -m "initial commit"
-- git add remote thecodebeneath {thegithubrepourl}
+- git remote add thecodebeneath {thegithubrepourl}
   - eg: git add remote thecodebeneath git@github.com-thecodebeneath:thecodebeneath/pal-tracker.git
   - note: modified the github.com host to append a unique label that will be deferenced by ~/.ssh/config
 - create/edit ~/.ssh/config file. The host entry must match the unique label added via the remote above
